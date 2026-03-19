@@ -72,6 +72,32 @@ export default function FruitCardGame() {
     timerRef.current = setInterval(() => setTimer(prev => prev + 1), 1000);
   };
 
+  const goHome = () => {
+    stopTimer();
+    setStatus('LOBBY');
+    setUserName('');
+  };
+
+  const saveResultToSheet = async (name: string, time: string) => {
+    // [중요] 여기에 배포하신 구글 웹 앱 URL을 입력하세요!
+    const SCRIPT_URL = ""; 
+    
+    if (!SCRIPT_URL) return console.log("구글 시트 URL이 설정되지 않았습니다.");
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          finishtime: time
+        })
+      });
+      console.log("시트에 성공적으로 저장되었습니다.");
+    } catch (e) {
+      console.error("결과 전송 중 오류 발생:", e);
+    }
+  };
+
   const stopTimer = () => { if (timerRef.current) clearInterval(timerRef.current); };
 
   const handleCardClick = (index: number) => {
@@ -112,6 +138,8 @@ export default function FruitCardGame() {
     if (matchedCount === 16) {
       setStatus('FINISHED');
       stopTimer();
+      // 성공적으로 완료 시 시트로 전송
+      saveResultToSheet(userName, formatTime(timer));
     }
   }, [matchedCount]);
 
