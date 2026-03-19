@@ -180,7 +180,7 @@ export default function FruitCardGame() {
                 onClick={() => handleCardClick(idx)}
               >
                 <div className="card-inner">
-                  <div className="card-front">🍎</div>
+                  <div className="card-front"></div>
                   <div className="card-back">
                     <div 
                       className="fruit-img" 
