@@ -80,7 +80,7 @@ export default function FruitCardGame() {
 
   const saveResultToSheet = async (name: string, time: string) => {
     // [중요] 여기에 배포하신 구글 웹 앱 URL을 입력하세요!
-    const SCRIPT_URL = ""; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyc1RhWYe3agv_OEv2bVYJaj0wmFkyeln2sXZIwzd3PYj61F-7JHf5XTI3Tq73djnEQ/exec"; 
     
     if (!SCRIPT_URL) return console.log("구글 시트 URL이 설정되지 않았습니다.");
 
