@@ -129,7 +129,7 @@ export default function FruitCardGame() {
     <div className="app-wrapper">
       <header className="header">
         <IconMenu />
-        <span className="brand">Kinetic Orchard</span>
+        <span className="brand">과일 짝맞추기</span>
         <IconSettings />
       </header>
 
@@ -139,28 +139,28 @@ export default function FruitCardGame() {
             <div className="blob pink">🍎</div>
             <div className="blob green">🌿</div>
           </div>
-          <h1 className="title">Fruit Match</h1>
-          <p className="tagline">Taste the kinetic energy.</p>
+          <h1 className="title">과일 매치</h1>
+          <p className="tagline">신선한 에너지를 느껴보세요.</p>
 
           <div className="main-card">
-            <label className="label">Player Identity</label>
+            <label className="label">플레이어 정보</label>
             <div className="input-field">
               <IconUser />
               <input 
                 type="text" 
-                placeholder="Enter your name..." 
+                placeholder="이름을 입력하세요..." 
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             <button className="btn-large btn-red" onClick={startGame}>
-              Start Game <IconArrow />
+              게임 시작 <IconArrow />
             </button>
           </div>
 
           <div className="chips">
-            <div className="chip">⏱️ 60s Round</div>
-            <div className="chip">⭐ Daily High: 2,400</div>
+            <div className="chip">⏱️ 60초 라운드</div>
+            <div className="chip">⭐ 오늘의 최고점: 2,400</div>
           </div>
         </main>
       )}
@@ -168,7 +168,7 @@ export default function FruitCardGame() {
       {status === 'PLAYING' && (
         <main className="screen fade-in">
           <div className="header-info" style={{width: '100%', display: 'flex', justifyContent: 'space-between', marginBottom: '10px'}}>
-             <h2 style={{fontSize: '1.5rem'}}>{userName}</h2>
+             <h2 style={{fontSize: '1.5rem'}}>{userName}님</h2>
              <span className="timer" style={{fontWeight: 800}}>{formatTime(timer)}</span>
           </div>
           
@@ -195,42 +195,42 @@ export default function FruitCardGame() {
               </div>
             ))}
           </div>
-          <button className="btn-large btn-gray" onClick={() => setStatus('LOBBY')}>Quit</button>
+          <button className="btn-large btn-gray" onClick={() => setStatus('LOBBY')}>그만두기</button>
         </main>
       )}
 
       {status === 'FINISHED' && (
         <main className="screen fade-in">
-          <h1 className="title">Well Done!</h1>
+          <h1 className="title">참 잘했어요!</h1>
           
           <div className="main-card" style={{textAlign: 'center'}}>
-            <label className="label">Total Time</label>
+            <label className="label">총 소요 시간</label>
             <div className="big-time">{formatTime(timer)}</div>
             
             <div className="stat-boxes">
               <div className="stat-box green">
                 <IconSparkles />
                 <span className="val">{accuracy}%</span>
-                <span className="desc">Accuracy</span>
+                <span className="desc">정확도</span>
               </div>
               <div className="stat-box yellow">
                 <IconRocket />
                 <span className="val">#12</span>
-                <span className="desc">Global Rank</span>
+                <span className="desc">전체 순위</span>
               </div>
             </div>
 
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
               <button className="btn-large btn-red" onClick={startGame}>
-                <IconRefresh /> Play Again
+                <IconRefresh /> 다시 하기
               </button>
               <button className="btn-large btn-gray" onClick={() => setStatus('LOBBY')}>
-                 <IconHome /> Home
+                 <IconHome /> 홈
               </button>
             </div>
           </div>
 
-          <p style={{marginTop: '40px', fontWeight: 800, color: '#999', cursor: 'pointer'}}>BRAG TO FRIENDS 📤</p>
+          <p style={{marginTop: '40px', fontWeight: 800, color: '#999', cursor: 'pointer'}}>친구에게 자랑하기 📤</p>
         </main>
       )}
 
@@ -238,15 +238,15 @@ export default function FruitCardGame() {
         <div className="nav-container">
           <div className={`nav-item ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}>
              <div className="icon-circle"><IconHome /></div>
-             <span>Home</span>
+             <span>홈</span>
           </div>
           <div className={`nav-item ${view === 'play' ? 'active' : ''}`} onClick={() => setView('play')}>
              <div className="icon-circle"><IconPlay /></div>
-             <span>Play</span>
+             <span>플레이</span>
           </div>
           <div className={`nav-item ${view === 'stats' ? 'active' : ''}`} onClick={() => setView('stats')}>
              <div className="icon-circle"><IconStats /></div>
-             <span>Stats</span>
+             <span>통계</span>
           </div>
         </div>
       </nav>
